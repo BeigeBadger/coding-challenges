@@ -1,14 +1,10 @@
 ﻿using System;
 using System.Linq;
 
-namespace _1._1_IsUnique_AdditionalStructures
+namespace _1._1_IsUnique
 {
 	internal class Program
 	{
-		/// <summary>
-		/// Is Unique: Implement an algorithm to determine if a string has all unique characters.
-		/// </summary>
-		/// <param name="args"></param>
 		private static void Main(string[] args)
 		{
 			Console.WriteLine("Please enter your input string");
@@ -21,11 +17,14 @@ namespace _1._1_IsUnique_AdditionalStructures
 			}
 			while (string.IsNullOrWhiteSpace(inputString));
 
-			Console.WriteLine(GenerateOutcome(inputString));
+			Console.WriteLine(GenerateOutcomeUsingAdditionalStructures(inputString));
 			Console.ReadLine();
 		}
 
-		private static string GenerateOutcome(string inputString)
+		/// <summary>
+		/// Is Unique: Implement an algorithm to determine if a string has all unique characters.
+		/// </summary>
+		private static string GenerateOutcomeUsingAdditionalStructures(string inputString)
 		{
 			char[] allInputedCharacters = inputString.ToCharArray();
 			char[] distinctCharacters = allInputedCharacters.Distinct().ToArray();
