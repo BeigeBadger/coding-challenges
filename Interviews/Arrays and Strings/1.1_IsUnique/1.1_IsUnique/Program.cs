@@ -21,7 +21,8 @@ namespace _1._1_IsUnique
 			}
 			while (string.IsNullOrWhiteSpace(inputString));
 
-			bool areAllCharactersUnique = IsUniqueUsingLinq(inputString);
+			//bool areAllCharactersUnique = IsUniqueUsingLinq(inputString);
+			bool areAllCharactersUnique = IsUniqueUsingArray(inputString);
 
 			string outcomeMessage = $"{(areAllCharactersUnique ? "Only unique characters are contained in" : "There are duplicated characters in")} '{inputString}'.";
 
@@ -37,7 +38,23 @@ namespace _1._1_IsUnique
 			int totalNumberOfCharacters = allInputedCharacters.Length;
 			int numberOfDistinctCharacters = distinctCharacters.Length;
 
-			return totalNumberOfCharacters == numberOfDistinctCharacters;
+			return totalNumberOfCharacters == numberOfDistinctCharacters)
+		}
+
+		private static bool IsUniqueUsingArray(string inputString)
+		{
+			int stringLength = inputString.Length;
+			char[] allInputedCharacters = new char[stringLength];
+
+			for (int i = 0; i < stringLength; i++)
+			{
+				if (Array.IndexOf(allInputedCharacters, inputString[i]) != -1)
+					return false;
+
+				allInputedCharacters[i] = inputString[i];
+			}
+
+			return true;
 		}
 	}
 }
