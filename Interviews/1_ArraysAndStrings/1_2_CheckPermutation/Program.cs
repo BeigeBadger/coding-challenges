@@ -49,13 +49,7 @@ namespace _1_2_CheckPermutation
 			Array.Sort(permutationSeedChars);
 			Array.Sort(comparetoChars);
 
-			for (int i = 0; i < permutationSeedChars.Length; i++)
-			{
-				if (permutationSeedChars[i] != comparetoChars[i])
-					return false;
-			}
-
-			return true;
+			return permutationSeedChars.Equals(comparetoChars);
 		}
 
 		/// <summary>
