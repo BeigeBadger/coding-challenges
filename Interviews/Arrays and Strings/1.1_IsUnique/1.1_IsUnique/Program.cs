@@ -38,7 +38,7 @@ namespace _1._1_IsUnique
 			int totalNumberOfCharacters = allInputedCharacters.Length;
 			int numberOfDistinctCharacters = distinctCharacters.Length;
 
-			return totalNumberOfCharacters == numberOfDistinctCharacters)
+			return totalNumberOfCharacters == numberOfDistinctCharacters;
 		}
 
 		private static bool IsUniqueUsingArray(string inputString)
