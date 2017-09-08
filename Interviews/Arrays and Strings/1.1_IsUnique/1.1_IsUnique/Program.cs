@@ -7,6 +7,7 @@ namespace _1._1_IsUnique
 	{
 		/// <summary>
 		/// Is Unique: Implement an algorithm to determine if a string has all unique characters.
+		/// What if you cannot use additional data structures?
 		/// </summary>
 		private static void Main(string[] args)
 		{
