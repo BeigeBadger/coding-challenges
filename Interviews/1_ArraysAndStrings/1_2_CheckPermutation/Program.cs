@@ -4,6 +4,8 @@ namespace _1_2_CheckPermutation
 {
 	internal class Program
 	{
+		private const int expectedNumberOfArgs = 2;
+
 		/// <summary>
 		/// Given two strings, write a method to decide if one is a permutation of the other.
 		/// </summary>
@@ -20,11 +22,9 @@ namespace _1_2_CheckPermutation
 			while (string.IsNullOrWhiteSpace(inputString));
 
 			string[] inputParts = inputString.Trim().Split('|');
-			int expectedNumberOfArgs = 2;
 			int actualNumberOfArgs = inputParts.Length;
 
-			if (expectedNumberOfArgs != actualNumberOfArgs)
-				throw new ArgumentException($"Expected {expectedNumberOfArgs} arguments but got {actualNumberOfArgs}");
+			HandleNumberOfArgumentsMismatch(expectedNumberOfArgs, actualNumberOfArgs);
 
 			string permutationSeed = inputParts[0];
 			string compareTo = inputParts[1];
@@ -39,6 +39,36 @@ namespace _1_2_CheckPermutation
 			Console.ReadLine();
 		}
 
+		private static void HandleNumberOfArgumentsMismatch(int expectedNumberOfArgs, int actualNumberOfArgs)
+		{
+			if (expectedNumberOfArgs != actualNumberOfArgs)
+				throw new ArgumentException($"Expected {expectedNumberOfArgs} arguments but got {actualNumberOfArgs}");
+		}
+
+		private static void IncrementCharacterOccuranceCount(char[] seedArray, int[] letterOccurances)
+		{
+			foreach (char c in seedArray)
+			{
+				letterOccurances[c]++;
+			}
+		}
+
+		private static bool CalculateIsPermutation(char[] compareArray, int[] letterOccurances)
+		{
+			for (int i = 0; i < compareArray.Length; i++)
+			{
+				int character = compareArray[i];
+				letterOccurances[character]--;
+
+				if (letterOccurances[character] < 0)
+				{
+					return false;
+				}
+			}
+
+			return true;
+		}
+
 		private static bool IsPermutationRunningCharacterTotal(string permutationSeed, string compareTo)
 		{
 			if (permutationSeed.Length != compareTo.Length)
@@ -50,23 +80,11 @@ namespace _1_2_CheckPermutation
 			char[] seedArray = permutationSeed.ToCharArray();
 			char[] compareArray = compareTo.ToCharArray();
 
-			foreach (char c in seedArray)
-			{
-				letters[c]++;
-			}
+			IncrementCharacterOccuranceCount(seedArray, letters);
 
-			for (int i = 0; i < compareArray.Length; i++)
-			{
-				int character = (int)compareArray[i];
-				letters[character]--;
+			bool isPermuatation = CalculateIsPermutation(compareArray, letters);
 
-				if (letters[character] < 0)
-				{
-					return false;
-				}
-			}
-
-			return true;
+			return isPermuatation;
 		}
 
 		private static bool IsPermutationSameLength(string permutationSeed, string compareTo)
@@ -81,44 +99,6 @@ namespace _1_2_CheckPermutation
 			Array.Sort(comparetoChars);
 
 			return permutationSeedChars.Equals(comparetoChars);
-		}
-
-		/// <summary>
-		/// Falls down if a character in the permutationSeed appears more than once.
-		/// This will result in a false negative
-		/// </summary>
-		/// <returns></returns>
-		private static bool IsPermutationDifferentLengths(string permutationSeed, string compareTo)
-		{
-			int numberOfPermutationChars = permutationSeed.Length;
-			int numberOfCompareToChars = compareTo.Length;
-
-			int[] permutationIndices = new int[numberOfPermutationChars];
-
-			for (int i = 0; i < numberOfPermutationChars; i++)
-			{
-				char currentSearchChar = permutationSeed[i];
-				int indexOfCharacter = compareTo.IndexOf(currentSearchChar);
-
-				if (indexOfCharacter == -1)
-					return false;
-
-				permutationIndices[i] = indexOfCharacter;
-			}
-
-			Array.Sort(permutationIndices);
-
-			int numberOfIndices = permutationIndices.Length;
-
-			for (int j = 0; j < numberOfIndices - 1; j++)
-			{
-				int nextIndex = j + 1 < numberOfIndices ? j + 1 : -1;
-
-				if (nextIndex == -1 || permutationIndices[nextIndex] - permutationIndices[j] >= 2)
-					return false;
-			}
-
-			return true;
 		}
 	}
 }

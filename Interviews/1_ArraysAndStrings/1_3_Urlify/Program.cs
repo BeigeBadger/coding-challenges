@@ -6,6 +6,7 @@ namespace _1_3_Urlify
 	internal class Program
 	{
 		private const string replacement = "%20";
+		private const int expectedNumberOfArgs = 2;
 
 		/// <summary>
 		/// Write a method to replace all spaces in a string with '%20: You may assume that the string
@@ -29,23 +30,34 @@ namespace _1_3_Urlify
 			while (string.IsNullOrWhiteSpace(inputString));
 
 			string[] inputParts = inputString.Trim().Split(',');
-			int expectedNumberOfArgs = 2;
+			string inputText = inputParts[0];
 			int actualNumberOfArgs = inputParts.Length;
 
-			if (expectedNumberOfArgs != actualNumberOfArgs)
-				throw new ArgumentException($"Expected {expectedNumberOfArgs} arguments but got {actualNumberOfArgs}");
+			HandleNumberOfArgumentsMismatch(expectedNumberOfArgs, actualNumberOfArgs);
 
-			string inputText = inputParts[0];
-			bool isInt = int.TryParse(inputParts[1], out int inputTrueLength);
-
-			if (!isInt)
-				throw new ArgumentException($"Expected {nameof(inputTrueLength)} to be an integer but it was not, '{inputTrueLength}' is not a valid integer.");
+			int inputTrueLength = ExtractInputLength(inputParts[1]);
 
 			//string outcomeMessage = UrlifyUsingStringMethods(inputText, inputTrueLength);
 			string outcomeMessage = UrlifyUsingRegex(inputText, inputTrueLength);
 
 			Console.WriteLine(outcomeMessage);
 			Console.ReadLine();
+		}
+
+		private static void HandleNumberOfArgumentsMismatch(int expectedNumberOfArgs, int actualNumberOfArgs)
+		{
+			if (expectedNumberOfArgs != actualNumberOfArgs)
+				throw new ArgumentException($"Expected {expectedNumberOfArgs} arguments but got {actualNumberOfArgs}");
+		}
+
+		private static int ExtractInputLength(string rawLength)
+		{
+			bool isInt = int.TryParse(rawLength, out int inputTrueLength);
+
+			if (!isInt)
+				throw new ArgumentException($"Expected {nameof(inputTrueLength)} to be an integer but it was not, '{inputTrueLength}' is not a valid integer.");
+
+			return inputTrueLength;
 		}
 
 		private static string UrlifyUsingStringMethods(string input, int length)
