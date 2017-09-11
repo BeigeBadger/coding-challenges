@@ -29,7 +29,7 @@ namespace _1_2_CheckPermutation
 			string permutationSeed = inputParts[0];
 			string compareTo = inputParts[1];
 
-			bool isAPermutation = IsPermutationSameLengths(permutationSeed, compareTo);
+			bool isAPermutation = IsPermutationSameLength(permutationSeed, compareTo);
 			//bool isAPermutation = IsPermutationDifferentLengths(permutationSeed, compareTo);
 
 			string outcomeMessage = $"'{compareTo}' {(isAPermutation ? "DOES" : "DOES NOT")} contain a permutation of '{permutationSeed}'.";
@@ -38,7 +38,7 @@ namespace _1_2_CheckPermutation
 			Console.ReadLine();
 		}
 
-		private static bool IsPermutationSameLengths(string permutationSeed, string compareTo)
+		private static bool IsPermutationSameLength(string permutationSeed, string compareTo)
 		{
 			char[] permutationSeedChars = permutationSeed.ToCharArray();
 			char[] comparetoChars = compareTo.ToCharArray();
