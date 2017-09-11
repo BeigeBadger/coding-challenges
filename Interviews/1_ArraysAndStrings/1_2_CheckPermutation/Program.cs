@@ -9,7 +9,7 @@ namespace _1_2_CheckPermutation
 		/// </summary>
 		private static void Main(string[] args)
 		{
-			Console.WriteLine("Please enter your input string");
+			Console.WriteLine("Please enter your input string in the form of: stringToMutate|comparisonString");
 
 			string inputString = "";
 
