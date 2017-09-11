@@ -30,12 +30,43 @@ namespace _1_2_CheckPermutation
 			string compareTo = inputParts[1];
 
 			bool isAPermutation = IsPermutationSameLength(permutationSeed, compareTo);
+			//bool isAPermutation = IsPermutationRunningCharacterTotal(permutationSeed, compareTo);
 			//bool isAPermutation = IsPermutationDifferentLengths(permutationSeed, compareTo);
 
 			string outcomeMessage = $"'{compareTo}' {(isAPermutation ? "DOES" : "DOES NOT")} contain a permutation of '{permutationSeed}'.";
 
 			Console.WriteLine(outcomeMessage);
 			Console.ReadLine();
+		}
+
+		private static bool IsPermutationRunningCharacterTotal(string permutationSeed, string compareTo)
+		{
+			if (permutationSeed.Length != compareTo.Length)
+			{
+				return false;
+			}
+
+			int[] letters = new int[128];
+			char[] seedArray = permutationSeed.ToCharArray();
+			char[] compareArray = compareTo.ToCharArray();
+
+			foreach (char c in seedArray)
+			{
+				letters[c]++;
+			}
+
+			for (int i = 0; i < compareArray.Length; i++)
+			{
+				int character = (int)compareArray[i];
+				letters[character]--;
+
+				if (letters[character] < 0)
+				{
+					return false;
+				}
+			}
+
+			return true;
 		}
 
 		private static bool IsPermutationSameLength(string permutationSeed, string compareTo)
