@@ -7,9 +7,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "1_1_IsUnique", "1_1_IsUniqu
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "1_2_CheckPermutation", "1_2_CheckPermutation\1_2_CheckPermutation.csproj", "{63557E13-B987-4198-BEA8-DAB589C437A2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "1_3_Urlify", "1_3_Urlify\1_3_Urlify.csproj", "{06DEA82C-FAA8-492C-8912-A3A209D9B83B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "1_3_Urlify", "1_3_Urlify\1_3_Urlify.csproj", "{06DEA82C-FAA8-492C-8912-A3A209D9B83B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "1_4_PrintPalindromePermutations", "1_4_PrintPalindromePermutations\1_4_PrintPalindromePermutations.csproj", "{293DFF67-BB6E-464E-BCF4-DF1AFE297C25}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "1_4_PrintPalindromePermutations", "1_4_PrintPalindromePermutations\1_4_PrintPalindromePermutations.csproj", "{293DFF67-BB6E-464E-BCF4-DF1AFE297C25}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "1_5_OneAway", "1_5_OneAway\1_5_OneAway.csproj", "{787B281B-47C2-4B69-83CE-29E94B815207}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{293DFF67-BB6E-464E-BCF4-DF1AFE297C25}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{293DFF67-BB6E-464E-BCF4-DF1AFE297C25}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{293DFF67-BB6E-464E-BCF4-DF1AFE297C25}.Release|Any CPU.Build.0 = Release|Any CPU
+		{787B281B-47C2-4B69-83CE-29E94B815207}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{787B281B-47C2-4B69-83CE-29E94B815207}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{787B281B-47C2-4B69-83CE-29E94B815207}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{787B281B-47C2-4B69-83CE-29E94B815207}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
