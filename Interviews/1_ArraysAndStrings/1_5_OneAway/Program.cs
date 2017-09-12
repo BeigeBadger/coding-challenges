@@ -38,7 +38,8 @@ namespace _1_5_OneAway
 			string inputOne = inputParts[0].Replace(" ", "").Trim();
 			string inputTwo = inputParts[1].Replace(" ", "").Trim();
 
-			bool isOneEditAway = IsOneEditAway(inputOne, inputTwo);
+			bool isOneEditAway = IsOneEditAwayCompact(inputOne, inputTwo);
+			//bool isOneEditAway = IsOneEditAway(inputOne, inputTwo);
 
 			string outcomeMessage = $"'{inputOne}' {(isOneEditAway ? "IS" : "IS NOT")} one edit away from '{inputTwo}'.";
 
@@ -50,6 +51,52 @@ namespace _1_5_OneAway
 		{
 			if (expectedNumberOfArgs != actualNumberOfArgs)
 				throw new ArgumentException($"Expected {expectedNumberOfArgs} arguments but got {actualNumberOfArgs}");
+		}
+
+		private static bool IsOneEditAwayCompact(string inputOne, string inputTwo)
+		{
+			int firstStringLength = inputOne.Length;
+			int secondStringLength = inputTwo.Length;
+
+			if (Math.Abs(firstStringLength - secondStringLength) > 1)
+			{
+				return false;
+			}
+
+			string s1 = firstStringLength < secondStringLength ? inputOne : inputTwo;
+			string s2 = firstStringLength < secondStringLength ? inputTwo : inputOne;
+
+			int index1 = 0;
+			int index2 = 0;
+			bool foundDifference = false;
+
+			int s1Length = s1.Length;
+			int s2Length = s2.Length;
+
+			while (index2 < s2Length && index1 < s1Length)
+			{
+				if (s1[index1] != s2[index2])
+				{
+					if (foundDifference) return false;
+					foundDifference = true;
+
+					if (s1Length == s2Length)
+					{
+						//On replace, move shorter pointer
+						index1++;
+					}
+				}
+				else
+				{
+					// If matching, move shorter pointer
+					index1++;
+				}
+
+				// Always move pointer for longe r string
+				index2++;
+			}
+
+			return true;
 		}
 
 		private static bool IsOneEditAway(string inputOne, string inputTwo)
