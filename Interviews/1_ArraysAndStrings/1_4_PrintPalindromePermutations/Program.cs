@@ -39,13 +39,13 @@ namespace _1_4_PrintPalindromePermutations
 		private static bool CanStringCanBeMutatedIntoAPalindrome(string input)
 		{
 			char[] characters = input.ToCharArray();
-			Dictionary<char, int> characterOccurances = CalculateCharacterOccurances(characters);
+			Dictionary<char, int> characterOccurances = GetCharacterOccuranceMapping(characters);
 			bool meetsPalindromeCriteria = HasPalindromeCharacteristics(characterOccurances);
 
 			return meetsPalindromeCriteria;
 		}
 
-		private static Dictionary<char, int> CalculateCharacterOccurances(char[] characters)
+		private static Dictionary<char, int> GetCharacterOccuranceMapping(char[] characters)
 		{
 			Dictionary<char, int> charOccurances = new Dictionary<char, int>();
 
