@@ -11,7 +11,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "1_3_Urlify", "1_3_Urlify\1_
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "1_4_PrintPalindromePermutations", "1_4_PrintPalindromePermutations\1_4_PrintPalindromePermutations.csproj", "{293DFF67-BB6E-464E-BCF4-DF1AFE297C25}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "1_5_OneAway", "1_5_OneAway\1_5_OneAway.csproj", "{787B281B-47C2-4B69-83CE-29E94B815207}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "1_5_OneAway", "1_5_OneAway\1_5_OneAway.csproj", "{787B281B-47C2-4B69-83CE-29E94B815207}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "1_6_StringCompression", "1_6_StringCompression\1_6_StringCompression.csproj", "{2A3949BD-8A87-4CED-B4DE-0CB3C3E071B1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{787B281B-47C2-4B69-83CE-29E94B815207}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{787B281B-47C2-4B69-83CE-29E94B815207}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{787B281B-47C2-4B69-83CE-29E94B815207}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2A3949BD-8A87-4CED-B4DE-0CB3C3E071B1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2A3949BD-8A87-4CED-B4DE-0CB3C3E071B1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2A3949BD-8A87-4CED-B4DE-0CB3C3E071B1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2A3949BD-8A87-4CED-B4DE-0CB3C3E071B1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
