@@ -52,28 +52,21 @@ namespace _1_6_StringCompression
 		{
 			char[] inputChars = input.ToCharArray();
 
-			int numberOfOccurances = 1;
-			char lastChar = ' ';
+			int numberOfOccurances = 0;
 			StringBuilder stringBuilder = new StringBuilder();
 
 			for (int i = 0; i < inputChars.Length; i++)
 			{
 				char currentChar = inputChars[i];
+				char nextChar = i + 1 < inputChars.Length ? inputChars[i + 1] : ' ';
 
-				if (lastChar == currentChar)
+				numberOfOccurances++;
+
+				if (i + 1 == inputChars.Length || nextChar != currentChar)
 				{
-					numberOfOccurances++;
-
-					if (i + 1 == inputChars.Length)
-						stringBuilder.Append($"{lastChar}{numberOfOccurances}");
+					stringBuilder.Append($"{currentChar}{numberOfOccurances}");
+					numberOfOccurances = 0;
 				}
-				else if (lastChar != ' ')
-				{
-					stringBuilder.Append($"{lastChar}{numberOfOccurances}");
-					numberOfOccurances = 1;
-				}
-
-				lastChar = currentChar;
 			}
 
 			return stringBuilder.ToString();
