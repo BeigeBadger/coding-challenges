@@ -19,24 +19,36 @@ namespace _0_0_GraphSearch
 			Console.WriteLine("DEPTH FIRST SEARCH");
 			Console.WriteLine("===============================================================================================");
 
-			Console.WriteLine($"Attempting to perform a Depth First Search on a single path balanced tree with {_singlePathBalancedTree.Value} as the root value.");
+			Console.WriteLine($"Attempting to perform a recursive Depth First Search on a single path balanced tree with {_singlePathBalancedTree.Value} as the root value.");
 			string outcome = DepthFirstSearchWithRecursion(_singlePathBalancedTree);
 			Console.WriteLine(outcome);
 
 			_nodeValues.Clear();
 
-			Console.WriteLine($"Attempting to perform a Depth First Search on a perfect tree with {_perfectTree.Value} as the root value.");
+			Console.WriteLine($"Attempting to perform a recursive Depth First Search on a perfect tree with {_perfectTree.Value} as the root value.");
 			outcome = DepthFirstSearchWithRecursion(_perfectTree);
 			Console.WriteLine(outcome);
 
 			_nodeValues.Clear();
+
+			//Console.WriteLine($"Attempting to perform a Depth First Search using a stack on a single path balanced tree with {_singlePathBalancedTree.Value} as the root value.");
+			//outcome = DepthFirstSearchWithStack(_singlePathBalancedTree.Value, _singlePathBalancedTree);
+			//Console.WriteLine(outcome);
+
+			//_nodeValues.Clear();
+
+			//Console.WriteLine($"Attempting to perform a Depth First Search using a stack on a perfect tree with {_perfectTree.Value} as the root value.");
+			//outcome = DepthFirstSearchWithStack(_perfectTree.Value, _perfectTree);
+			//Console.WriteLine(outcome);
+
+			//_nodeValues.Clear();
 
 			Console.ReadLine();
 		}
 
 		public static string DepthFirstSearchWithRecursion(Node root)
 		{
-			var visited = new List<int>();
+			List<int> visited = new List<int>();
 
 			Traverse(root.Value, visited, root);
 
@@ -57,6 +69,41 @@ namespace _0_0_GraphSearch
 				}
 			}
 		}
+
+		//private static string DepthFirstSearchWithStack(int vertex, Node root)
+		//{
+		//	List<int> visited = new List<int>
+		//	{
+		//		vertex
+		//	};
+
+		//	Stack<int> stack = new Stack<int>();
+
+		//	stack.Push(vertex);
+
+		//	while (stack.Count > 0)
+		//	{
+		//		int current = stack.Pop();
+
+		//		_nodeValues.Add(current.ToString());
+
+		//		if (!visited.Contains(current))
+		//		{
+		//			visited.Add(current);
+		//		}
+
+		//		if (root.AdjacentNodes.ContainsKey(current))
+		//		{
+		//			foreach (int neighbour in root.AdjacentNodes[current].Where(a => !visited.Contains(a)))
+		//			{
+		//				visited.Add(neighbour);
+		//				stack.Push(neighbour);
+		//			}
+		//		}
+		//	}
+
+		//	return string.Join(",", _nodeValues);
+		//}
 
 		private static Node CreateSinglePathBalancedTree()
 		{
