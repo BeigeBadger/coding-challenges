@@ -6,7 +6,6 @@ namespace _0_0_GraphSearch
 {
 	internal class Program
 	{
-		private static List<string> _nodeValues;
 		private const int startingPoint = 5;
 
 		private static Node _singlePathBalancedTree = CreateSinglePathBalancedTree();
@@ -14,8 +13,6 @@ namespace _0_0_GraphSearch
 
 		private static void Main(string[] args)
 		{
-			_nodeValues = new List<string>();
-
 			Console.WriteLine("DEPTH FIRST SEARCH");
 			Console.WriteLine("===============================================================================================");
 
@@ -23,19 +20,13 @@ namespace _0_0_GraphSearch
 			string outcome = DepthFirstSearchWithRecursion(_singlePathBalancedTree);
 			Console.WriteLine(outcome);
 
-			_nodeValues.Clear();
-
 			Console.WriteLine($"Attempting to perform a recursive Depth First Search on a perfect tree with {_perfectTree.Value} as the root value.");
 			outcome = DepthFirstSearchWithRecursion(_perfectTree);
 			Console.WriteLine(outcome);
 
-			_nodeValues.Clear();
-
 			//Console.WriteLine($"Attempting to perform a Depth First Search using a stack on a perfect tree with {_perfectTree.Value} as the root value.");
 			//outcome = DepthFirstSearchWithStack(_perfectTree.Value, _perfectTree);
 			//Console.WriteLine(outcome);
-
-			//_nodeValues.Clear();
 
 			Console.WriteLine("");
 			Console.WriteLine("BREADTH FIRST SEARCH");
@@ -44,8 +35,6 @@ namespace _0_0_GraphSearch
 			Console.WriteLine($"Attempting to perform a Breadth First Search using a stack on a single path balanced tree with {_singlePathBalancedTree.Value} as the root value.");
 			outcome = BreadthFirstSearchUsingQueue(_singlePathBalancedTree);
 			Console.WriteLine(outcome);
-
-			_nodeValues.Clear();
 
 			Console.WriteLine($"Attempting to perform a Breadth First Search using a stack on a perfect tree with {_perfectTree.Value} as the root value.");
 			outcome = BreadthFirstSearchUsingQueue(_perfectTree);
@@ -60,14 +49,12 @@ namespace _0_0_GraphSearch
 
 			Traverse(root.Value, vistedNodes, root);
 
-			return string.Join(",", _nodeValues);
+			return string.Join(",", vistedNodes);
 		}
 
 		private static void Traverse(int vertex, List<int> vistedNodes, Node root)
 		{
 			vistedNodes.Add(vertex);
-
-			_nodeValues.Add(vertex.ToString());
 
 			if (root.AdjacentNodes.ContainsKey(vertex))
 			{
@@ -117,17 +104,16 @@ namespace _0_0_GraphSearch
 		private static string BreadthFirstSearchUsingQueue(Node root)
 		{
 			Queue<int> queue = new Queue<int>();
-			List<int> vistedNodes = new List<int>();
-
-			vistedNodes.Add(root.Value);
+			List<int> vistedNodes = new List<int>
+			{
+				root.Value
+			};
 
 			queue.Enqueue(root.Value);
 
 			while (queue.Any())
 			{
 				int current = queue.Dequeue();
-
-				_nodeValues.Add(current.ToString());
 
 				if (root.AdjacentNodes.ContainsKey(current))
 				{
@@ -139,7 +125,7 @@ namespace _0_0_GraphSearch
 				}
 			}
 
-			return string.Join(",", _nodeValues);
+			return string.Join(",", vistedNodes);
 		}
 
 		private static Node CreateSinglePathBalancedTree()
