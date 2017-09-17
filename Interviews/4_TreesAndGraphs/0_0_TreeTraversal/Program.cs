@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace _0_0_Scratchpad
+namespace _0_0_TreeTraversal
 {
 	internal class Program
 	{
