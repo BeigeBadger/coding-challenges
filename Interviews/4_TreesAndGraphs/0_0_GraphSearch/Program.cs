@@ -31,26 +31,34 @@ namespace _0_0_GraphSearch
 
 			_nodeValues.Clear();
 
-			//Console.WriteLine($"Attempting to perform a Depth First Search using a stack on a single path balanced tree with {_singlePathBalancedTree.Value} as the root value.");
-			//outcome = DepthFirstSearchWithStack(_singlePathBalancedTree.Value, _singlePathBalancedTree);
-			//Console.WriteLine(outcome);
-
-			//_nodeValues.Clear();
-
 			//Console.WriteLine($"Attempting to perform a Depth First Search using a stack on a perfect tree with {_perfectTree.Value} as the root value.");
 			//outcome = DepthFirstSearchWithStack(_perfectTree.Value, _perfectTree);
 			//Console.WriteLine(outcome);
 
 			//_nodeValues.Clear();
 
+			Console.WriteLine("");
+			Console.WriteLine("BREADTH FIRST SEARCH");
+			Console.WriteLine("===============================================================================================");
+
+			Console.WriteLine($"Attempting to perform a Breadth First Search using a stack on a single path balanced tree with {_singlePathBalancedTree.Value} as the root value.");
+			outcome = BreadthFirstSearchUsingQueue(_singlePathBalancedTree);
+			Console.WriteLine(outcome);
+
+			_nodeValues.Clear();
+
+			Console.WriteLine($"Attempting to perform a Breadth First Search using a stack on a perfect tree with {_perfectTree.Value} as the root value.");
+			outcome = BreadthFirstSearchUsingQueue(_perfectTree);
+			Console.WriteLine(outcome);
+
 			Console.ReadLine();
 		}
 
 		public static string DepthFirstSearchWithRecursion(Node root)
 		{
-			List<int> visited = new List<int>();
+			List<int> vistedNodes = new List<int>();
 
-			Traverse(root.Value, visited, root);
+			Traverse(root.Value, vistedNodes, root);
 
 			return string.Join(",", _nodeValues);
 		}
@@ -63,16 +71,17 @@ namespace _0_0_GraphSearch
 
 			if (root.AdjacentNodes.ContainsKey(vertex))
 			{
-				foreach (int neighbour in root.AdjacentNodes[vertex].Where(a => !vistedNodes.Contains(a)))
+				foreach (int neighbour in root.AdjacentNodes[vertex].Where(adjacentNode => !vistedNodes.Contains(adjacentNode)))
 				{
 					Traverse(neighbour, vistedNodes, root);
 				}
 			}
 		}
 
+		// TODO: FIXME
 		//private static string DepthFirstSearchWithStack(int vertex, Node root)
 		//{
-		//	List<int> visited = new List<int>
+		//	List<int> vistedNodes = new List<int>
 		//	{
 		//		vertex
 		//	};
@@ -87,16 +96,16 @@ namespace _0_0_GraphSearch
 
 		//		_nodeValues.Add(current.ToString());
 
-		//		if (!visited.Contains(current))
+		//		if (!vistedNodes.Contains(current))
 		//		{
-		//			visited.Add(current);
+		//			vistedNodes.Add(current);
 		//		}
 
 		//		if (root.AdjacentNodes.ContainsKey(current))
 		//		{
-		//			foreach (int neighbour in root.AdjacentNodes[current].Where(a => !visited.Contains(a)))
+		//			foreach (int neighbour in root.AdjacentNodes[current].Where(adjacentNode => !visited.Contains(adjacentNode)))
 		//			{
-		//				visited.Add(neighbour);
+		//				vistedNodes.Add(neighbour);
 		//				stack.Push(neighbour);
 		//			}
 		//		}
@@ -104,6 +113,34 @@ namespace _0_0_GraphSearch
 
 		//	return string.Join(",", _nodeValues);
 		//}
+
+		private static string BreadthFirstSearchUsingQueue(Node root)
+		{
+			Queue<int> queue = new Queue<int>();
+			List<int> vistedNodes = new List<int>();
+
+			vistedNodes.Add(root.Value);
+
+			queue.Enqueue(root.Value);
+
+			while (queue.Any())
+			{
+				int current = queue.Dequeue();
+
+				_nodeValues.Add(current.ToString());
+
+				if (root.AdjacentNodes.ContainsKey(current))
+				{
+					foreach (int neighbour in root.AdjacentNodes[current].Where(adjacentNode => !vistedNodes.Contains(adjacentNode)))
+					{
+						vistedNodes.Add(neighbour);
+						queue.Enqueue(neighbour);
+					}
+				}
+			}
+
+			return string.Join(",", _nodeValues);
+		}
 
 		private static Node CreateSinglePathBalancedTree()
 		{
