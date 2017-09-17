@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26430.15
+VisualStudioVersion = 15.0.26730.15
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "1_1_IsUnique", "1_1_IsUnique\1_1_IsUnique.csproj", "{796B64E5-B94F-427B-AA60-FFCEAA6B29E5}"
 EndProject
@@ -13,7 +13,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "1_4_PrintPalindromePermutat
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "1_5_OneAway", "1_5_OneAway\1_5_OneAway.csproj", "{787B281B-47C2-4B69-83CE-29E94B815207}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "1_6_StringCompression", "1_6_StringCompression\1_6_StringCompression.csproj", "{2A3949BD-8A87-4CED-B4DE-0CB3C3E071B1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "1_6_StringCompression", "1_6_StringCompression\1_6_StringCompression.csproj", "{2A3949BD-8A87-4CED-B4DE-0CB3C3E071B1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -48,5 +48,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {59CC7BEC-4CA7-4357-A578-6B6AD9722CAD}
 	EndGlobalSection
 EndGlobal
